@@ -45,7 +45,8 @@ void hive_hash(const char* input, char* output)
     sph_keccak256_context    ctx_keccak;
 
 
-    uint32_t hashA[16], hashB[16];
+//    uint32_t hashA[16], hashB[16];
+    uint32_t  hashA[8], hashB[8];
 
 
 
@@ -58,12 +59,12 @@ void hive_hash(const char* input, char* output)
 
 
     sph_blake256_init(&ctx_blake);
-    sph_blake256 (&ctx_blake, hashA, 64);    //0
+    sph_blake256 (&ctx_blake, hashA, 32);    //0
     sph_blake256_close(&ctx_blake, hashB);   //1
 
 
     sph_keccak256_init(&ctx_keccak);
-    sph_keccak256 (&ctx_keccak, hashB, 64); //2
+    sph_keccak256 (&ctx_keccak, hashB, 32); //2
     sph_keccak256_close(&ctx_keccak, hashA); //3
 
 
